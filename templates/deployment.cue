@@ -11,11 +11,11 @@ import (
 	kind:       "Deployment"
 	metadata:   #config.metadata
 	spec: appsv1.#DeploymentSpec & {
-		replicas: #config.replicas
-		selector: matchLabels: #config.selector.labels
+		replicas: #config.service1.replicas
+		selector: matchLabels: #config.service1.selector.labels
 		template: {
 			metadata: {
-				labels: #config.selector.labels
+				labels: #config.service1.selector.labels
 				if #config.pod.annotations != _|_ {
 					annotations: #config.pod.annotations
 				}
@@ -24,8 +24,8 @@ import (
 				containers: [
 					{
 						name:            #config.metadata.name
-						image:           #config.image.reference
-						imagePullPolicy: #config.image.pullPolicy
+						image:           #config.service1.image.reference
+						imagePullPolicy: #config.service1.image.pullPolicy
 						ports: [
 							{
 								name:          "http"
