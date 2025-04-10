@@ -79,6 +79,32 @@ import (
         // By default, the number of replicas is 1.
         replicas: *1 | int & >0
     }
+
+    service2: {
+
+        // The image allows setting the container image repository,
+        // tag, digest and pull policy.
+        image: timoniv1.#Image & {
+            repository: *"docker.io/nginx" | string
+            tag:        *"1-alpine" | string
+            digest:     *"" | string
+        }
+
+
+        // The resources allows setting the container resource requirements.
+        // By default, the container requests 10m CPU and 32Mi memory.
+        resources: timoniv1.#ResourceRequirements & {
+            requests: {
+                cpu:    *"10m" | timoniv1.#CPUQuantity
+                memory: *"32Mi" | timoniv1.#MemoryQuantity
+            }
+        }
+
+        // The number of pods replicas.
+        // By default, the number of replicas is 1.
+        replicas: *1 | int & >0
+    }
+
 	// The securityContext allows setting the container security context.
 	// By default, the container is denined privilege escalation.
 	securityContext: corev1.#SecurityContext & {
@@ -97,6 +123,7 @@ import (
 	config: #Config
 
 	objects: {
-		deploy: #Deployment & {#config: config}
+		deploy1: #Deployment1 & {#config: config}
+        deploy2: #Deployment2 & {#config: config}
 	}
 }

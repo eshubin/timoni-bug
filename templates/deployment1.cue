@@ -3,19 +3,28 @@ package templates
 import (
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
+    timoniv1 "timoni.sh/core/v1alpha1"
 )
 
-#Deployment: appsv1.#Deployment & {
+#Deployment1: appsv1.#Deployment & {
 	#config:    #Config
 	apiVersion: "apps/v1"
 	kind:       "Deployment"
-	metadata:   #config.metadata
+
+	metadata: timoniv1.#MetaComponent & {
+		#Meta:      #config.metadata
+		#Component: "service1"
+	}
 	spec: appsv1.#DeploymentSpec & {
 		replicas: #config.service1.replicas
-		selector: matchLabels: #config.service1.selector.labels
+        _selector: {
+			(timoniv1.#StdLabelName): metadata.name
+		}
+
+		selector: matchLabels: _selector
 		template: {
 			metadata: {
-				labels: #config.service1.selector.labels
+				labels: _selector
 				if #config.pod.annotations != _|_ {
 					annotations: #config.pod.annotations
 				}
