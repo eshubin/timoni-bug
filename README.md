@@ -1,21 +1,21 @@
         Command being timed: "timoni mod vet"
-        User time (seconds): 0.31
+        User time (seconds): 0.35
         System time (seconds): 0.03
-        Percent of CPU this job got: 153%
-        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.22
+        Percent of CPU this job got: 160%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.23
         Average shared text size (kbytes): 0
         Average unshared data size (kbytes): 0
         Average stack size (kbytes): 0
         Average total size (kbytes): 0
-        Maximum resident set size (kbytes): 62336
+        Maximum resident set size (kbytes): 63232
         Average resident set size (kbytes): 0
         Major (requiring I/O) page faults: 0
-        Minor (reclaiming a frame) page faults: 9305
-        Voluntary context switches: 559
-        Involuntary context switches: 94
+        Minor (reclaiming a frame) page faults: 9559
+        Voluntary context switches: 633
+        Involuntary context switches: 342
         Swaps: 0
-        File system inputs: 320
-        File system outputs: 2840
+        File system inputs: 184
+        File system outputs: 2888
         Socket messages sent: 0
         Socket messages received: 0
         Signals delivered: 0
