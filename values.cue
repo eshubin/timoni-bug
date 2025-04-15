@@ -19,10 +19,26 @@ values: {
             port: 1235
         }
     }
+
+    service1:
+        redis: {
+            host: "redis-local.com"
+            port: 135
+        }
+
     service2:
         mysql: {
             user: "admin_svc2"
             password: "secret2"
         }
+    service3: {
+        redis: {
+            host: "redis.com"
+        }
 
+        mysql: {
+            user: "admin_svc3"
+            password: "secret3"
+        }
+    }
 }

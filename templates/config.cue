@@ -60,6 +60,11 @@ import (
         #commonGroups: commonGroups
     }
 
+    service3: #Service3Config & {
+        #commonGroups: commonGroups
+    }
+
+
 	// The securityContext allows setting the container security context.
 	// By default, the container is denined privilege escalation.
 	securityContext: corev1.#SecurityContext & {
