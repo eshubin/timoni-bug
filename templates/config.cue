@@ -6,6 +6,7 @@ import (
 )
 
 #CommonServiceConfig: {
+    #commonGroups: #CommonGroups
     // The image allows setting the container image repository,
     // tag, digest and pull policy.
     image: timoniv1.#Image & {
@@ -26,15 +27,51 @@ import (
 
     // The number of pods replicas.
     replicas: int & >0
+    ...
+}
+
+#CommonRedisConfig: {
+    host: string
+    port: int
+}
+
+#RedisConfig: {
+    #default: #CommonRedisConfig
+    host: string | *#default.host
+    port: int | *#default.port
+}
+
+#CommonMySQLConfig: {
+    host: string
+    port: int
+    user: string
+    password: string
+}
+
+#MySQLConfig: {
+    #default: #CommonMySQLConfig
+    host: string | *#default.host
+    port: int | *#default.port
+    user: string | *#default.user
+    password: string | *#default.password
+}
+
+#CommonGroups : {
+    mysql: #CommonMySQLConfig
+    redis: #CommonRedisConfig
 }
 
 
 #Service1Config: #CommonServiceConfig & {
+    #commonGroups: #CommonGroups
     replicas: 1
+    redis: #RedisConfig & {#default: #commonGroups.redis}
 }
 
 #Service2Config: #CommonServiceConfig & {
+    #commonGroups: #CommonGroups
     replicas: 2
+    mysql: #MySQLConfig & {#default: #commonGroups.mysql}
 }
 
 
@@ -83,9 +120,15 @@ import (
 		imagePullSecrets?: [...timoniv1.#ObjectReference]
 	}
 
-    service1: #Service1Config
+    commonGroups: #CommonGroups
 
-    service2: #Service2Config
+    service1: #Service1Config & {
+        #commonGroups: commonGroups
+    }
+
+    service2: #Service2Config & {
+        #commonGroups: commonGroups
+    }
 
 	// The securityContext allows setting the container security context.
 	// By default, the container is denined privilege escalation.

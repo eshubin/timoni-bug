@@ -6,4 +6,17 @@
 package main
 
 // Placeholder for user-supplied values.
-values: {}
+values: {
+    commonGroups: {
+        mysql: {
+            host: "127.0.0.1"
+            port: 1234
+            user: "admin"
+            password: "secret"
+        }
+        redis: {
+            host: "127.0.0.1"
+            port: 1235
+        }
+    }
+}
