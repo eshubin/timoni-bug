@@ -19,4 +19,12 @@ values: {
             port: 1235
         }
     }
+    service2:
+        mysql: {
+            host: "127.0.0.1"
+            port: 1234
+            user: "admin_svc2"
+            password: "secret"
+        }
+
 }

@@ -16,9 +16,11 @@ package templates
 }
 
 #MySQLConfigData: {
-	#component:     string
+	#service:     string
 	#configuration: #Config
 
-	REDIS_HOST:   #configuration[#component].redis.host
-    REDIS_PORT:   #configuration[#component].redis.port
+	MYSQL_HOST:   #configuration[#service].mysql.host
+    MYSQL_PORT:   "\(#configuration[#service].mysql.port)"
+    MYSQL_USER:   #configuration[#service].mysql.user
+    MYSQL_PASSWORD:   #configuration[#service].mysql.password
 }
