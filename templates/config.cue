@@ -5,76 +5,6 @@ import (
 	timoniv1 "timoni.sh/core/v1alpha1"
 )
 
-#CommonServiceConfig: {
-    #commonGroups: #CommonGroups
-    // The image allows setting the container image repository,
-    // tag, digest and pull policy.
-    image: timoniv1.#Image & {
-        repository: *"docker.io/nginx" | string
-        tag:        *"1-alpine" | string
-        digest:     *"" | string
-    }
-
-
-    // The resources allows setting the container resource requirements.
-    // By default, the container requests 10m CPU and 32Mi memory.
-    resources: timoniv1.#ResourceRequirements & {
-        requests: {
-            cpu:    *"10m" | timoniv1.#CPUQuantity
-            memory: *"32Mi" | timoniv1.#MemoryQuantity
-        }
-    }
-
-    // The number of pods replicas.
-    replicas: int & >0
-    ...
-}
-
-#CommonRedisConfig: {
-    host: string
-    port: int
-}
-
-#RedisConfig: {
-    #default: #CommonRedisConfig
-    host: string | *#default.host
-    port: int | *#default.port
-}
-
-#CommonMySQLConfig: {
-    host: string
-    port: int
-    user: string
-    password: string
-}
-
-#MySQLConfig: {
-    #default: #CommonMySQLConfig
-    host: string | *#default.host
-    port: int | *#default.port
-    user: string | *#default.user
-    password: string | *#default.password
-}
-
-#CommonGroups : {
-    mysql: #CommonMySQLConfig
-    redis: #CommonRedisConfig
-}
-
-
-#Service1Config: #CommonServiceConfig & {
-    #commonGroups: #CommonGroups
-    replicas: 1
-    redis: #RedisConfig & {#default: #commonGroups.redis}
-}
-
-#Service2Config: #CommonServiceConfig & {
-    #commonGroups: #CommonGroups
-    replicas: 2
-    mysql: #MySQLConfig & {#default: #commonGroups.mysql}
-}
-
-
 // Config defines the schema and defaults for the Instance values.
 #Config: {
 	// The kubeVersion is a required field, set at apply-time
@@ -148,6 +78,7 @@ import (
 	config: #Config
 
 	objects: {
+        cm1: #Service1ConfigMap & {#config: config}
 		deploy1: #Deployment1 & {#config: config}
         deploy2: #Deployment2 & {#config: config}
 	}

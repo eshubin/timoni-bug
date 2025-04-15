@@ -6,6 +6,39 @@ import (
     timoniv1 "timoni.sh/core/v1alpha1"
 )
 
+
+
+#CommonServiceConfig: {
+    #commonGroups: #CommonGroups
+    // The image allows setting the container image repository,
+    // tag, digest and pull policy.
+    image: timoniv1.#Image & {
+        repository: *"docker.io/nginx" | string
+        tag:        *"1-alpine" | string
+        digest:     *"" | string
+    }
+
+
+    // The resources allows setting the container resource requirements.
+    // By default, the container requests 10m CPU and 32Mi memory.
+    resources: timoniv1.#ResourceRequirements & {
+        requests: {
+            cpu:    *"10m" | timoniv1.#CPUQuantity
+            memory: *"32Mi" | timoniv1.#MemoryQuantity
+        }
+    }
+
+    // The number of pods replicas.
+    replicas: int & >0
+    ...
+}
+
+#CommonGroups : {
+    mysql: #CommonMySQLConfig
+    redis: #CommonRedisConfig
+}
+
+
 #CommonDeployment: appsv1.#Deployment & {
 	#config:    #Config
     #component: string
@@ -74,5 +107,18 @@ import (
 				}
 			}
 		}
+	}
+}
+
+
+#CommonConfigMap: corev1.#ConfigMap & {
+	#config:       #Config
+	#component: string
+    apiVersion: "v1"
+	kind:       timoniv1.#ConfigMapKind
+
+	metadata: timoniv1.#MetaComponent & {
+		#Meta:      #config.metadata
+		#Component: #component
 	}
 }
