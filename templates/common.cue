@@ -43,6 +43,7 @@ import (
 #CommonDeployment: appsv1.#Deployment & {
 	#config:    #Config
     #component: string
+    #cm: string
 	apiVersion: "apps/v1"
 	kind:       "Deployment"
 
@@ -70,6 +71,9 @@ import (
 						name:            #config.metadata.name
 						image:           #config[#component].image.reference
 						imagePullPolicy: #config[#component].image.pullPolicy
+                        envFrom: [
+                            {configMapRef: {name: #cm}}
+                        ]
 						ports: [
 							{
 								name:          "http"

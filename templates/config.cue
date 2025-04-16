@@ -87,12 +87,15 @@ import (
 
 	objects: {
         cm1: #Service1ConfigMap & {#config: config}
+        deploy1: #Deployment1 & {#config: config, #cm: objects.cm1.metadata.name}
+        
         cm2: #Service2ConfigMap & {#config: config}
+        deploy2: #Deployment2 & {#config: config, #cm: objects.cm2.metadata.name}
+        
         cm3: #Service3ConfigMap & {#config: config}
+        deploy3: #Deployment3 & {#config: config, #cm: objects.cm3.metadata.name}
+
         cm4: #Service4ConfigMap & {#config: config}
-		deploy1: #Deployment1 & {#config: config}
-        deploy2: #Deployment2 & {#config: config}
-        deploy3: #Deployment3 & {#config: config}
-        deploy4: #Deployment3 & {#config: config}
+        deploy4: #Deployment3 & {#config: config, #cm: objects.cm4.metadata.name}
 	}
 }
