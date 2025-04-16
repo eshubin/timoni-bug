@@ -72,6 +72,10 @@ import (
         #commonGroups: commonGroups
     }
 
+    service6: #Service6Config & {
+        #commonGroups: commonGroups
+    }
+
 	// The securityContext allows setting the container security context.
 	// By default, the container is denined privilege escalation.
 	securityContext: corev1.#SecurityContext & {
@@ -104,5 +108,8 @@ import (
 
         cm5: #Service5ConfigMap & {#config: config}
         deploy5: #Deployment5 & {#config: config, #cm: objects.cm5.metadata.name}
+
+        cm6: #Service6ConfigMap & {#config: config}
+        deploy6: #Deployment6 & {#config: config, #cm: objects.cm6.metadata.name}
 	}
 }
