@@ -59,4 +59,21 @@ values: {
             region: "eu-west2"
         }
     }
+
+    service4: {
+        var1: "D1"
+        var2: "D2"
+        redis: {
+            host: "redis.com"
+        }
+
+        mysql: {
+            user: "admin_svc4"
+            password: "secret4"
+        }
+
+        s3: {
+            region: "us-west2"
+        }
+    }
 }
