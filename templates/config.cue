@@ -68,9 +68,9 @@ import (
         #commonGroups: commonGroups
     }
 
-    // service5: #Service4Config & {
-    //     #commonGroups: commonGroups
-    // }
+    service5: #Service5Config & {
+        #commonGroups: commonGroups
+    }
 
 	// The securityContext allows setting the container security context.
 	// By default, the container is denined privilege escalation.
@@ -102,7 +102,7 @@ import (
         cm4: #Service4ConfigMap & {#config: config}
         deploy4: #Deployment4 & {#config: config, #cm: objects.cm4.metadata.name}
 
-        // cm5: #Service5ConfigMap & {#config: config}
-        // deploy5: #Deployment3 & {#config: config, #cm: objects.cm4.metadata.name}
+        cm5: #Service5ConfigMap & {#config: config}
+        deploy5: #Deployment5 & {#config: config, #cm: objects.cm5.metadata.name}
 	}
 }
