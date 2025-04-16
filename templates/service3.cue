@@ -8,6 +8,7 @@ package templates
     data: {
         #MySQLConfigData & dataParams
         #RedisConfigData & dataParams
+        #S3ConfigData & dataParams
         SERVICE3_VAR1: "C1"
         SERVICE3_VAR2: "C2"
     }
@@ -19,6 +20,7 @@ package templates
     replicas: 2
     mysql: #MySQLConfig & {#default: #commonGroups.mysql}
     redis: #RedisConfig & {#default: #commonGroups.redis}
+    s3: #S3Config & {#default: #commonGroups.s3}
 }
 
 

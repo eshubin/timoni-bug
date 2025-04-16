@@ -45,5 +45,9 @@ values: {
             user: "admin_svc3"
             password: "secret3"
         }
+
+        s3: {
+            region: "eu-west2"
+        }
     }
 }
