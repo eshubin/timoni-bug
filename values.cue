@@ -18,6 +18,11 @@ values: {
             host: "127.0.0.1"
             port: 1235
         }
+        s3: {
+            host: "aws.com"
+            port: 443
+            region: "eu-west1"
+        }
     }
 
     service1:

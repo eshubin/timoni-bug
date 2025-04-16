@@ -85,7 +85,9 @@ import (
 	objects: {
         cm1: #Service1ConfigMap & {#config: config}
         cm2: #Service2ConfigMap & {#config: config}
+        cm3: #Service2ConfigMap & {#config: config}
 		deploy1: #Deployment1 & {#config: config}
         deploy2: #Deployment2 & {#config: config}
+        deploy3: #Deployment3 & {#config: config}
 	}
 }
