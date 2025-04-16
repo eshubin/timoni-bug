@@ -8,6 +8,12 @@ package main
 // Placeholder for user-supplied values.
 values: {
     commonGroups: {
+        mongodb: {
+            host: "127.0.0.1"
+            port: 1234
+            user: "admin"
+            password: "secret"
+        }
         mysql: {
             host: "127.0.0.1"
             port: 1234
@@ -76,4 +82,21 @@ values: {
             region: "us-west2"
         }
     }
+
+    // service5: {
+    //     var1: "D1"
+    //     var2: "D2"
+    //     redis: {
+    //         host: "redis.com"
+    //     }
+
+    //     mysql: {
+    //         user: "admin_svc4"
+    //         password: "secret4"
+    //     }
+
+    //     s3: {
+    //         region: "us-west2"
+    //     }
+    // }
 }

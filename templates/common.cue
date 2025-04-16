@@ -37,6 +37,7 @@ import (
     mysql: #CommonMySQLConfig
     redis: #CommonRedisConfig
     s3: #CommonS3Config
+    mongodb: #CommonMongoDBConfig
 }
 
 
