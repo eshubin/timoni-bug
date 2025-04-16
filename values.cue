@@ -25,18 +25,27 @@ values: {
         }
     }
 
-    service1:
+    service1: {
         redis: {
             host: "redis-local.com"
             port: 135
         }
+        var1: "A1"
+        var2: "A2"
+    }
 
-    service2:
+    service2: {
         mysql: {
             user: "admin_svc2"
             password: "secret2"
         }
+        var1: "B1"
+        var2: "B2"
+    }
+
     service3: {
+        var1: "C1"
+        var2: "C2"
         redis: {
             host: "redis.com"
         }

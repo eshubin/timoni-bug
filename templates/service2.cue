@@ -8,8 +8,8 @@ package templates
     data: {
         #MySQLConfigData & dataParams
         #S3ConfigData & dataParams
-        SERVICE2_VAR1: "B1"
-        SERVICE2_VAR2: "B2"
+        SERVICE2_VAR1: #config[#component].var1
+        SERVICE2_VAR2: #config[#component].var2
     }
 }
 
@@ -19,6 +19,8 @@ package templates
     replicas: 2
     mysql: #MySQLConfig & {#default: #commonGroups.mysql}
     s3: #S3Config & {#default: #commonGroups.s3}
+    var1: string
+    var2: string
 }
 
 
