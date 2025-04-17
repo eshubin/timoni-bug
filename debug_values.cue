@@ -5,23 +5,101 @@ package main
 // Values used by debug_tool.cue.
 // Debug example 'cue cmd -t debug -t name=test -t namespace=test -t mv=1.0.0 -t kv=1.28.0 build'.
 values: {
-	image: {
-		repository: "docker.io/nginx"
-		tag:        "1-alpine-slim"
-		digest:     ""
-	}
+    commonGroups: {
+        mongodb: {
+            host: "127.0.0.1"
+            port: 1234
+            user: "admin"
+            password: "secret"
+        }
+        mysql: {
+            host: "127.0.0.1"
+            port: 1234
+            user: "admin"
+            password: "secret"
+        }
+        redis: {
+            host: "127.0.0.1"
+            port: 1235
+        }
+        s3: {
+            host: "aws.com"
+            port: 443
+            region: "eu-west1"
+        }
+    }
 
-	pod: {
-		annotations: "cluster-autoscaler.kubernetes.io/safe-to-evict": "true"
-		imagePullSecrets: [{
-			name: "regcred"
-		}]
-	}
+    service1: {
+        redis: {
+            host: "redis-local.com"
+            port: 135
+        }
+        var1: "A1"
+        var2: "A2"
+    }
 
-	resources: {
-		limits: {
-			cpu:    "100m"
-			memory: "128Mi"
-		}
-	}
+    service2: {
+        mysql: {
+            user: "admin_svc2"
+            password: "secret2"
+        }
+        var1: "B1"
+        var2: "B2"
+    }
+
+    service3: {
+        var1: "C1"
+        var2: "C2"
+        redis: {
+            host: "redis.com"
+        }
+
+        mysql: {
+            user: "admin_svc3"
+            password: "secret3"
+        }
+
+        s3: {
+            region: "eu-west2"
+        }
+    }
+
+    service4: {
+        var1: "D1"
+        var2: "D2"
+        redis: {
+            host: "redis.com"
+        }
+
+        mysql: {
+            user: "admin_svc4"
+            password: "secret4"
+        }
+
+        s3: {
+            region: "us-west2"
+        }
+    }
+
+    service5: {
+        var1: "E1"
+        var2: "E2"
+        redis: {
+            host: "redis.com"
+        }
+
+        mysql: {
+            user: "admin_svc4"
+            password: "secret4"
+        }
+
+        s3: {
+            region: "us-west2"
+        }
+
+        mongodb: {
+            user: "admin_svc4"
+            password: "secret4"
+        }
+    }
 }
