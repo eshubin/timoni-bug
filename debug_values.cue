@@ -81,20 +81,25 @@ values: {
         }
     }
 
-    // service5: {
-    //     var1: "D1"
-    //     var2: "D2"
-    //     redis: {
-    //         host: "redis.com"
-    //     }
+    service5: {
+        var1: "E1"
+        var2: "E2"
+        redis: {
+            host: "redis.com"
+        }
 
-    //     mysql: {
-    //         user: "admin_svc4"
-    //         password: "secret4"
-    //     }
+        mysql: {
+            user: "admin_svc4"
+            password: "secret4"
+        }
 
-    //     s3: {
-    //         region: "us-west2"
-    //     }
-    // }
+        s3: {
+            region: "us-west2"
+        }
+
+        mongodb: {
+            user: "admin_svc4"
+            password: "secret4"
+        }
+    }
 }
