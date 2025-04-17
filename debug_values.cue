@@ -102,4 +102,9 @@ values: {
             password: "secret4"
         }
     }
+
+    service6: {
+        var1: "F1"
+        var2: "F2"
+    }
 }
