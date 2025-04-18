@@ -26,27 +26,27 @@ Measured with `/usr/bin/time -v timoni mod vet`
         Page size (bytes): 4096
         Exit status: 0
 
-# CUE v0.12.1
+# CUE v0.13.0-alpha.3.0.20250417092820-fac9a305d0db
 
 Measured with `/usr/bin/time -v cue cmd -t debug -t name=test -t namespace=test -t mv=1.0.0 -t kv=1.28.0 build'
 
 	Command being timed: "cue cmd -t debug -t name=test -t namespace=test -t mv=1.0.0 -t kv=1.28.0 build"
-	User time (seconds): 39.04
-	System time (seconds): 0.49
-	Percent of CPU this job got: 200%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.76
+	User time (seconds): 0.89
+	System time (seconds): 0.11
+	Percent of CPU this job got: 187%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.53
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 1050028
+	Maximum resident set size (kbytes): 327296
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 267745
-	Voluntary context switches: 6041
-	Involuntary context switches: 1083
+	Minor (reclaiming a frame) page faults: 109355
+	Voluntary context switches: 551
+	Involuntary context switches: 47
 	Swaps: 0
-	File system inputs: 1512
+	File system inputs: 0
 	File system outputs: 0
 	Socket messages sent: 0
 	Socket messages received: 0
